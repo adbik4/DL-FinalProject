@@ -1,30 +1,7 @@
 #define F_CPU 16000000UL  // ustawiamy predkosc zegara
 
-#include <avr/io.h>
-#include <util/delay.h>
-
-// Funkcja włacza diode pb0 
-void diode_pb0_on(void)
-{
-    PORTB &= ~(1 << PORTB0);  
-
-// Funkcja wylacza diode pb0
-void diode_pb0_off(void)
-{
-    PORTB |= (1 << PORTB0);   
-}
-
-// Wlaczamy pb1
-void diode_pb1_on(void)
-{
-    PORTB &= ~(1 << PORTB1);  
-}
-
-// Wyłaczamy pb1
-void diode_pb1_off(void)
-{
-    PORTB |= (1 << PORTB1);   
-}
+#include <main.h>
+#include <diodes.h>
 
 int main(void)
 {
