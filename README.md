@@ -3,6 +3,11 @@
 ![Schemat Blokowy](Images/Block_Diagram.jpg)
 
 ## Schemat ideowy
+![alt text](Images/DL_Schematic_state2.png)
+
+## Design PCB
+![alt text](Images/DL_PCB_state1.png)
+
 ### Blok mikrokontrolera (ATmega328PB)
 *Obliczanie wartości pojemności C1 i C2 potrzebnych do zewnętrznego oscylatora MCU:*    
 
