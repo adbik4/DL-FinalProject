@@ -8,6 +8,9 @@
 ## Design PCB
 ![alt text](Images/DL_PCB_state2.png)
 
+## Podgląd 3D
+![alt text](Images/DL_PCB_preview1.png)
+
 ### Blok mikrokontrolera (ATmega328PB)
 *Obliczanie wartości pojemności C1 i C2 potrzebnych do zewnętrznego oscylatora MCU:*    
 
