@@ -3,9 +3,18 @@
 #include <main.h>
 #include <diodes.h>
 #include <display.h>
+#include <uart.h>
+//#include <spi.h>
+//#include <sdcard.h>
+
 
 int main(void)
 {
+	uart_init();
+	
+	uart_println("ATmega328PB UART Test");
+	uart_println("System uruchomiony!");
+	
     // Ustawiamy pb0 i pb1 jako wyjscia
     DDRB |= (1 << DDB0) | (1 << DDB1);
     
@@ -52,8 +61,19 @@ while (1)
         _delay_ms(500);
     }
 	
+	
+	 while (1) {
+		 if (uart_available()) {
+			 uint8_t data = uart_read();
+			 uart_transmit(data); // Echo odebranych danych
+		 }
+		 
+		 _delay_ms(1000);
+		 uart_print("Tick: ");
+		 uart_print_int(counter++);
+		 uart_println("");
+	 }
 
 	 
-    
     return 0;
 }
