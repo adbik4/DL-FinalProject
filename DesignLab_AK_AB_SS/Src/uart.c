@@ -3,7 +3,6 @@
  * 
  * UART driver implementation for ATmega328PB
  */
-
 #include <uart.h>
 #include <main.h>
 #include <avr/interrupt.h>
@@ -18,28 +17,28 @@ static volatile uint8_t tx_head = 0;
 static volatile uint8_t tx_tail = 0;
 
 void uart_init(void) {
-    // Ustaw prêdkoœæ transmisji
+    // Ustaw prï¿½dkoï¿½ï¿½ transmisji
     UBRR0H = (uint8_t)(UBRR_VALUE >> 8);
     UBRR0L = (uint8_t)UBRR_VALUE;
     
-    // W³¹cz odbiornik i nadajnik
+    // Wï¿½ï¿½cz odbiornik i nadajnik
     UCSR0B = (1 << RXEN0) | (1 << TXEN0);
     
-    // W³¹cz przerwania odbioru
+    // Wï¿½ï¿½cz przerwania odbioru
     UCSR0B |= (1 << RXCIE0);
     
-    // Ustaw format ramki: 8 bitów danych, 1 bit stopu, bez parzystoœci
+    // Ustaw format ramki: 8 bitï¿½w danych, 1 bit stopu, bez parzystoï¿½ci
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
     
-    // W³¹cz globalne przerwania
+    // Wï¿½ï¿½cz globalne przerwania
     sei();
 }
 
 void uart_transmit(uint8_t data) {
-    // Czekaj a¿ bufor nadawczy bêdzie pusty
+    // Czekaj aï¿½ bufor nadawczy bï¿½dzie pusty
     while (!(UCSR0A & (1 << UDRE0)));
     
-    // Wyœlij dane
+    // Wyï¿½lij dane
     UDR0 = data;
 }
 
@@ -47,12 +46,12 @@ uint8_t uart_receive(void) {
     // Czekaj na dane
     while (!(UCSR0A & (1 << RXC0)));
     
-    // Zwróæ odebrane dane
+    // Zwrï¿½ï¿½ odebrane dane
     return UDR0;
 }
 
 uint8_t uart_available(void) {
-    // SprawdŸ czy s¹ dane w buforze
+    // Sprawdï¿½ czy sï¿½ dane w buforze
     return (rx_head != rx_tail);
 }
 
@@ -123,7 +122,7 @@ void uart_flush(void) {
     while (UCSR0A & (1 << RXC0)) {
         dummy = UDR0;
     }
-    (void)dummy; // Unikaj ostrze¿enia o nieu¿ywanej zmiennej
+    (void)dummy; // Unikaj ostrzeï¿½enia o nieuï¿½ywanej zmiennej
 }
 
 // Przerwanie odbioru UART - zapisuje dane do bufora cyklicznego
@@ -131,15 +130,15 @@ ISR(USART_RX_vect) {
     uint8_t data = UDR0;
     uint8_t next_head = (rx_head + 1) % UART_RX_BUFFER_SIZE;
     
-    // Jeœli bufor nie jest pe³ny, zapisz dane
+    // Jeï¿½li bufor nie jest peï¿½ny, zapisz dane
     if (next_head != rx_tail) {
         rx_buffer[rx_head] = data;
         rx_head = next_head;
     }
-    // W przeciwnym razie dane s¹ tracone (overflow)
+    // W przeciwnym razie dane sï¿½ tracone (overflow)
 }
 
-// Funkcja do odczytu z bufora cyklicznego (nieblokuj¹ca)
+// Funkcja do odczytu z bufora cyklicznego (nieblokujï¿½ca)
 uint8_t uart_read(void) {
     if (rx_head == rx_tail) {
         return 0; // Brak danych
