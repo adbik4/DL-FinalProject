@@ -11,13 +11,13 @@
 // Funkcja w?acza diode pb0
 void diode_pb0_on(void)
 {
-	PORTB &= ~(1 << PORTB0);
+	PORTC &= ~(1 << PC0);
 }
 
 // Funkcja wylacza diode pb0
 void diode_pb0_off(void)
 {
-	PORTB |= (1 << PORTB0);
+	PORTC |= (1 << PC0);
 }
 
 // Wlaczamy pb1
