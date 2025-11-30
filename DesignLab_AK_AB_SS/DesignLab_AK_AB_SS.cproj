@@ -135,34 +135,27 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="inc2\diodes.h">
+    <Compile Include="diodes.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="inc2\display.h">
+    <Compile Include="diodes.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="inc2\main.h">
+    <Compile Include="display.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="inc2\uart.h">
+    <Compile Include="display.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src2\diodes.c">
+    <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src2\display.c">
+    <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src2\main.c">
+    <Compile Include="uart.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src2\uart.c">
-      <SubType>compile</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="inc2" />
-    <Folder Include="src2" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

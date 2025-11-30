@@ -2,11 +2,11 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-src2\diodes.c
+diodes.c
 
-src2\display.c
+display.c
 
-src2\main.c
+main.c
 
-src2\uart.c
+uart.c
 

@@ -15,11 +15,5 @@
 
 #include <avr/interrupt.h>
 
-// Button configuration - SW0 on ATmega328PB Xplained Mini
-#define BUTTON_PORT     PORTB
-#define BUTTON_PIN      PINB
-#define BUTTON_DDR      DDRB
-#define BUTTON_BIT      PB7     // SW0 is connected to PB7
-
 #endif /* MAIN_H_ */
 
