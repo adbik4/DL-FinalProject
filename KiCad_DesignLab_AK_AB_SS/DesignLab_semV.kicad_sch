@@ -4,6 +4,15 @@
 	(generator_version "9.0")
 	(uuid "66104a27-11ea-4d6a-b2bb-762e8524b9a1")
 	(paper "A4")
+	(title_block
+		(title "Design Lab EiT - semestr V")
+		(date "2025-12-02")
+		(rev "2.0")
+		(company "AGH University of Science and Technology")
+		(comment 1 "Adrian Bik")
+		(comment 2 "Sebastian Skowron")
+		(comment 3 "Artur Korneluk")
+	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x04_Pin"
 			(pin_names
@@ -5841,7 +5850,7 @@
 			)
 			(justify right)
 		)
-		(uuid "08e53f89-cf43-444b-9c17-89cf8500e25c")
+		(uuid "08e53f89-cf43-444b-9c17-89cf8500e25d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 204.8715 87.63 0)
 			(effects
@@ -6083,7 +6092,7 @@
 			)
 			(justify left)
 		)
-		(uuid "35225070-2144-4a61-b8d0-68eca146d8ed")
+		(uuid "35225070-2144-4a61-b8d0-68eca146d8ee")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 138.7542 102.87 0)
 			(effects
@@ -6105,7 +6114,7 @@
 			)
 			(justify left)
 		)
-		(uuid "35225070-2144-4a61-b8d0-68eca146d8ed")
+		(uuid "35225070-2144-4a61-b8d0-68eca146d8ef")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 138.8752 100.33 0)
 			(effects
@@ -6127,7 +6136,7 @@
 			)
 			(justify left)
 		)
-		(uuid "35225070-2144-4a61-b8d0-68eca146d8ed")
+		(uuid "35225070-2144-4a61-b8d0-68eca146d8f0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 138.8752 97.79 0)
 			(effects
@@ -6149,7 +6158,7 @@
 			)
 			(justify left)
 		)
-		(uuid "35225070-2144-4a61-b8d0-68eca146d8ed")
+		(uuid "35225070-2144-4a61-b8d0-68eca146d8f1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 138.6938 105.41 0)
 			(effects
@@ -6457,7 +6466,7 @@
 			)
 			(justify left)
 		)
-		(uuid "763a772f-be3c-4b2a-9647-e5ceef23f34b")
+		(uuid "763a772f-be3c-4b2a-9647-e5ceef23f34c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 141.5966 86.36 0)
 			(effects
@@ -6655,7 +6664,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.2248 80.01 0)
 			(effects
@@ -6677,7 +6686,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a40")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.2248 82.55 0)
 			(effects
@@ -6699,7 +6708,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a41")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.2248 85.09 0)
 			(effects
@@ -6721,7 +6730,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a42")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.2248 92.71 0)
 			(effects
@@ -6743,7 +6752,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a43")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.3458 87.63 0)
 			(effects
@@ -6765,7 +6774,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a44")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.4062 90.17 0)
 			(effects
@@ -6787,7 +6796,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a3e")
+		(uuid "bfd80b76-9b58-42b5-a5da-f8ab9af01a45")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 23.7453 95.25 0)
 			(effects
@@ -6897,7 +6906,7 @@
 			)
 			(justify left)
 		)
-		(uuid "dd5ba69e-ab3c-49a9-90ff-e8d45ecbfc6b")
+		(uuid "dd5ba69e-ab3c-49a9-90ff-e8d45ecbfc6c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 89.2847 143.51 0)
 			(effects
@@ -6941,7 +6950,7 @@
 			)
 			(justify left)
 		)
-		(uuid "e51fb8c9-5342-41fe-8e75-f093e5791fee")
+		(uuid "e51fb8c9-5342-41fe-8e75-f093e5791fef")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 136.0328 80.01 0)
 			(effects
@@ -7029,7 +7038,7 @@
 			)
 			(justify left)
 		)
-		(uuid "f8dcc37a-b6ec-4e1c-be9f-d70506116477")
+		(uuid "f8dcc37a-b6ec-4e1c-be9f-d70506116478")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 140.5685 59.69 0)
 			(effects
