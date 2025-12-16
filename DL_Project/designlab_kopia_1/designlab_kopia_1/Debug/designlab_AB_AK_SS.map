@@ -73,7 +73,7 @@ c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-cons
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_umulhisi3.o)
                               c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_muluhisi3.o) (__umulhisi3)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
-                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o (exit)
+                              Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o (exit)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(_Exit.o)
                               c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o) (_Exit)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
@@ -98,8 +98,8 @@ t_fine              0x4               sensors.o
 
 Discarded input sections
 
- .data          0x0000000000000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
- .bss           0x0000000000000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .data          0x0000000000000000        0x0 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .bss           0x0000000000000000        0x0 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
  .text          0x0000000000000000        0x0 diodes.o
  .data          0x0000000000000000        0x0 diodes.o
  .bss           0x0000000000000000        0x0 diodes.o
@@ -604,7 +604,7 @@ user_signatures  0x0000000000850000 0x0000000000000400 rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800100
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+LOAD Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
 LOAD diodes.o
 LOAD display.o
 LOAD main.o
@@ -617,7 +617,7 @@ START GROUP
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libm.a
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega328pb.a
+LOAD Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega328pb.a
 END GROUP
                 [0x0000000000000000]                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
                 [0x0000000000800100]                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800060
@@ -721,7 +721,7 @@ END GROUP
 
 .text           0x0000000000000000      0x10e
  *(.vectors)
- .vectors       0x0000000000000000       0xb4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .vectors       0x0000000000000000       0xb4 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
                 0x0000000000000000                __vector_default
                 0x0000000000000000                __vectors
  *(.vectors)
@@ -751,13 +751,13 @@ END GROUP
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000000000000ba        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .init0         0x00000000000000ba        0x0 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
                 0x00000000000000ba                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000000000000ba        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .init2         0x00000000000000ba        0xc Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
  *(.init2)
  *(.init3)
  *(.init3)
@@ -775,7 +775,7 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000000000000102        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .init9         0x0000000000000102        0x8 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
  *(.init9)
                 0x000000000000010a                . = ALIGN (0x2)
  *(.fini9)
@@ -1019,18 +1019,18 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x32fc
+.debug_info     0x0000000000000000     0x32c5
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000      0x8ea C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
- .debug_info    0x00000000000008ea      0x2e9 diodes.o
- .debug_info    0x0000000000000bd3      0x398 display.o
- .debug_info    0x0000000000000f6b      0x937 main.o
- .debug_info    0x00000000000018a2     0x1329 sensors.o
- .debug_info    0x0000000000002bcb      0x731 uart.o
+ .debug_info    0x0000000000000000      0x8ea Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .debug_info    0x00000000000008ea      0x2de diodes.o
+ .debug_info    0x0000000000000bc8      0x38d display.o
+ .debug_info    0x0000000000000f55      0x92c main.o
+ .debug_info    0x0000000000001881     0x131e sensors.o
+ .debug_info    0x0000000000002b9f      0x726 uart.o
 
 .debug_abbrev   0x0000000000000000      0xf8d
  *(.debug_abbrev)
- .debug_abbrev  0x0000000000000000      0x86e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .debug_abbrev  0x0000000000000000      0x86e Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
  .debug_abbrev  0x000000000000086e       0x46 diodes.o
  .debug_abbrev  0x00000000000008b4       0xec display.o
  .debug_abbrev  0x00000000000009a0      0x166 main.o
@@ -1039,7 +1039,7 @@ END GROUP
 
 .debug_line     0x0000000000000000     0x1158
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x0000000000000000      0x1a9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .debug_line    0x0000000000000000      0x1a9 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
  .debug_line    0x00000000000001a9       0xcb diodes.o
  .debug_line    0x0000000000000274      0x18e display.o
  .debug_line    0x0000000000000402      0x284 main.o
@@ -1056,7 +1056,7 @@ END GROUP
 
 .debug_str      0x0000000000000000      0x462
  *(.debug_str)
- .debug_str     0x0000000000000000      0x318 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .debug_str     0x0000000000000000      0x318 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
  .debug_str     0x0000000000000318        0x0 diodes.o
  .debug_str     0x0000000000000318        0x0 display.o
  .debug_str     0x0000000000000318      0x113 main.o
@@ -1098,14 +1098,14 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(designlab_kopia_1.elf elf32-avr)
+OUTPUT(designlab_AB_AK_SS.elf elf32-avr)
 LOAD linker stubs
 LOAD data_init
 
 .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x40
  .note.gnu.avr.deviceinfo
-                0x0000000000000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+                0x0000000000000000       0x40 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
 
 .bss.seg_values
                 0x000000000080015c        0x4
@@ -1594,7 +1594,7 @@ LOAD data_init
                 0x0000000000001b14                __fp_nan
 
 .text           0x0000000000001b1a        0x4
- .text          0x0000000000001b1a        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
+ .text          0x0000000000001b1a        0x4 Z:/SOFTWARE/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega328pb.o
                 0x0000000000001b1a                __vector_38
                 0x0000000000001b1a                __vector_22
                 0x0000000000001b1a                __vector_28
