@@ -5,19 +5,19 @@
  *  Author: Adrian
  */ 
 
-#include <main.h>
-#include <diodes.h>
+#include "main.h"
+#include "diodes.h"
 
 // Funkcja w?acza diode pb0
 void diode_pb0_on(void)
 {
-	PORTC &= ~(1 << PC0);
+	PORTC &= ~(1 << PORTC0);
 }
 
 // Funkcja wylacza diode pb0
 void diode_pb0_off(void)
 {
-	PORTC |= (1 << PC0);
+	PORTC |= (1 << PORTC0);
 }
 
 // Wlaczamy pb1

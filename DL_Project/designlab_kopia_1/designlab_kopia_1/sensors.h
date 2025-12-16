@@ -1,10 +1,12 @@
-#include <main.h>
-#define SCL_CLOCK 100000L  // 100kHz I2C clock
+#ifndef SENSORS_H_
+#define SENSORS_H_
 
-// BMP280 I2C address (SDO pin to GND = 0x76, SDO to VCC = 0x77)
+#include <avr/io.h>
+
+#define SCL_CLOCK 100000L
+
 #define BMP280_ADDR 0x76
 
-// BMP280 Register addresses
 #define BMP280_REG_ID           0xD0
 #define BMP280_REG_RESET        0xE0
 #define BMP280_REG_STATUS       0xF3
@@ -13,7 +15,6 @@
 #define BMP280_REG_PRESS_MSB    0xF7
 #define BMP280_REG_TEMP_MSB     0xFA
 
-// Calibration data registers - Temperature
 #define BMP280_REG_DIG_T1_LSB   0x88
 #define BMP280_REG_DIG_T1_MSB   0x89
 #define BMP280_REG_DIG_T2_LSB   0x8A
@@ -21,7 +22,6 @@
 #define BMP280_REG_DIG_T3_LSB   0x8C
 #define BMP280_REG_DIG_T3_MSB   0x8D
 
-// Calibration data registers - Pressure
 #define BMP280_REG_DIG_P1_LSB   0x8E
 #define BMP280_REG_DIG_P1_MSB   0x8F
 #define BMP280_REG_DIG_P2_LSB   0x90
@@ -41,27 +41,54 @@
 #define BMP280_REG_DIG_P9_LSB   0x9E
 #define BMP280_REG_DIG_P9_MSB   0x9F
 
-// DS18B20 Configuration - Data pin on PC3
 #define DS18B20_PORT    PORTC
 #define DS18B20_DDR     DDRC
 #define DS18B20_PIN     PINC
 #define DS18B20_DQ      PC3
 
-// DS18B20 Commands
 #define DS18B20_CMD_CONVERTTEMP     0x44
 #define DS18B20_CMD_RSCRATCHPAD     0xBE
-#define DS18B20_CMD_WSCRATCHPAD     0x4E
-#define DS18B20_CMD_CPYSCRATCHPAD   0x48
-#define DS18B20_CMD_RECEEPROM       0xB8
-#define DS18B20_CMD_RPWRSUPPLY      0xB4
-#define DS18B20_CMD_SEARCHROM       0xF0
-#define DS18B20_CMD_READROM         0x33
-#define DS18B20_CMD_MATCHROM        0x55
 #define DS18B20_CMD_SKIPROM         0xCC
-#define DS18B20_CMD_ALARMSEARCH     0xEC
 
-// Button configuration - SW0 on ATmega328PB Xplained Mini
 #define BUTTON_PORT     PORTC
 #define BUTTON_PIN      PINC
 #define BUTTON_DDR      DDRC
-#define BUTTON_BIT      PC2     // SW0 is connected to PB7
+#define BUTTON_BIT      PC2
+
+typedef enum {
+	DISPLAY_BMP_TEMPERATURE,
+	DISPLAY_BMP_PRESSURE,
+	DISPLAY_DS18B20_TEMPERATURE,
+	DISPLAY_MODE_COUNT
+} display_mode_t;
+
+
+
+
+// DS18B20
+uint8_t DS18B20_Reset(void);
+void DS18B20_WriteByte(uint8_t byte);
+uint8_t DS18B20_ReadByte(void);
+int16_t DS18B20_ReadTemperature(void);
+
+// I2C
+void I2C_Init(void);
+void I2C_Start(void);
+void I2C_Stop(void);
+void I2C_Write(uint8_t data);
+uint8_t I2C_Read_ACK(void);
+uint8_t I2C_Read_NACK(void);
+
+// BMP280
+void BMP280_Init(void);
+uint8_t BMP280_ReadReg(uint8_t reg);
+void BMP280_WriteReg(uint8_t reg, uint8_t value);
+void BMP280_ReadCalibration(void);
+int16_t BMP280_ReadTemperature(void);
+uint16_t BMP280_ReadPressure(void);
+
+// Button
+void Button_Init(void);
+uint8_t Button_IsPressed(void);
+
+#endif /* SENSORS_H_ */

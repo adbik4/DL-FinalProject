@@ -8,5 +8,7 @@ display.c
 
 main.c
 
+sensors.c
+
 uart.c
 

@@ -16,4 +16,3 @@
 #include <avr/interrupt.h>
 
 #endif /* MAIN_H_ */
-

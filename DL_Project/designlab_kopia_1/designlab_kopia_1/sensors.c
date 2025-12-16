@@ -1,11 +1,6 @@
-#include <sensors.h>
-// Display mode
-typedef enum {
-	DISPLAY_BMP_TEMPERATURE,
-	DISPLAY_BMP_PRESSURE,
-	DISPLAY_DS18B20_TEMPERATURE,
-	DISPLAY_MODE_COUNT
-} display_mode_t;
+#include "sensors.h"
+#include "main.h"
+
 
 volatile display_mode_t display_mode = DISPLAY_BMP_TEMPERATURE;
 
@@ -123,10 +118,10 @@ int16_t DS18B20_ReadTemperature(void) {
 	
 	// Reset and check presence
 	if (DS18B20_Reset()) {
-		return -9999; // Error: no device found
+		return -9999; 
 	}
 	
-	// Skip ROM (single device on bus)
+	// Skip ROM 
 	DS18B20_WriteByte(DS18B20_CMD_SKIPROM);
 	
 	// Start temperature conversion
@@ -153,9 +148,8 @@ int16_t DS18B20_ReadTemperature(void) {
 	// Combine bytes
 	temp = (temp_msb << 8) | temp_lsb;
 	
-	// Convert to 0.1째C resolution
-	// DS18B20 returns temp in 0.0625째C steps
-	// Multiply by 10 and divide by 16 to get 0.1째C
+	// Convert to 0.1캜 resolution
+
 	return (temp * 10) / 16;
 }
 
@@ -225,7 +219,7 @@ uint8_t BMP280_ReadReg(uint8_t reg) {
 void BMP280_ReadCalibration(void) {
 	uint8_t calib[24];
 	
-	// Read all calibration data (0x88 to 0x9F)
+	// Read all calibration data
 	I2C_Start();
 	I2C_Write((BMP280_ADDR << 1) | 0);
 	I2C_Write(BMP280_REG_DIG_T1_LSB);
@@ -256,29 +250,25 @@ void BMP280_ReadCalibration(void) {
 }
 
 void BMP280_Init(void) {
-	_delay_ms(100); // Wait for sensor to boot
+	_delay_ms(100); 
 	
-	// Check chip ID
 	uint8_t id = BMP280_ReadReg(BMP280_REG_ID);
 	if (id != 0x58) {
-		// Wrong chip ID - handle error
+		
 		return;
 	}
 	
-	// Soft reset
+	
 	BMP280_WriteReg(BMP280_REG_RESET, 0xB6);
 	_delay_ms(100);
 	
 	// Read calibration data
 	BMP280_ReadCalibration();
 	
-	// Configure sensor
-	// osrs_t = 1 (temperature oversampling x1)
-	// osrs_p = 1 (pressure oversampling x1)
-	// mode = 11 (normal mode)
+	
 	BMP280_WriteReg(BMP280_REG_CTRL_MEAS, 0x27);
 	
-	// Configure: t_sb = 5 (1000ms standby), filter = 0 (off)
+	
 	BMP280_WriteReg(BMP280_REG_CONFIG, 0xA0);
 	
 	_delay_ms(100);
@@ -306,7 +296,7 @@ uint32_t BMP280_CompensatePressure(int32_t adc_P) {
 	var1 = (((((int64_t)1) << 47) + var1)) * ((int64_t)dig_P1) >> 33;
 	
 	if (var1 == 0) {
-		return 0; // Avoid division by zero
+		return 0; 
 	}
 	
 	p = 1048576 - adc_P;
@@ -315,7 +305,7 @@ uint32_t BMP280_CompensatePressure(int32_t adc_P) {
 	var2 = (((int64_t)dig_P8) * p) >> 19;
 	p = ((p + var1 + var2) >> 8) + (((int64_t)dig_P7) << 4);
 	
-	return (uint32_t)p; // Pressure in Q24.8 format (Pa * 256)
+	return (uint32_t)p; 
 }
 
 int16_t BMP280_ReadTemperature(void) {
@@ -361,7 +351,7 @@ uint16_t BMP280_ReadPressure(void) {
 	I2C_Stop();
 	
 	adc_T = ((int32_t)temp_data[0] << 12) | ((int32_t)temp_data[1] << 4) | ((int32_t)temp_data[2] >> 4);
-	BMP280_CompensateTemp(adc_T); // Update t_fine
+	BMP280_CompensateTemp(adc_T); 
 	
 	// Read pressure registers
 	I2C_Start();
@@ -381,7 +371,7 @@ uint16_t BMP280_ReadPressure(void) {
 	// Compensate pressure
 	uint32_t pressure = BMP280_CompensatePressure(adc_P);
 	
-	// Convert to hPa (divide by 256 to get Pa, then divide by 100 to get hPa)
+
 	return (uint16_t)((pressure / 256) / 100);
 }
 
@@ -396,7 +386,7 @@ void Button_Init(void) {
 uint8_t Button_IsPressed(void) {
 	static uint8_t button_state = 0;
 	
-	// Read button (assuming active LOW with pull-up)
+	// Read button
 	uint8_t current = !(BUTTON_PIN & (1 << BUTTON_BIT));
 	
 	if (current && !button_state) {
@@ -414,66 +404,5 @@ uint8_t Button_IsPressed(void) {
 	return 0;
 }
 
-// ============= Main Program =============
 
-int main(void) {
-	int16_t bmp_temperature;
-	uint16_t bmp_pressure;
-	int16_t ds18b20_temperature;
 	
-	// Initialize I2C
-	I2C_Init();
-	
-	// Initialize button
-	Button_Init();
-	
-	// Initialize 7-segment display
-	SevenSeg_Init();
-	
-	// Initialize BMP280
-	BMP280_Init();
-	
-	// Enable global interrupts
-	sei();
-	
-	while (1) {
-		// Check if button is pressed
-		if (Button_IsPressed()) {
-			// Cycle through display modes
-			display_mode = (display_mode + 1) % DISPLAY_MODE_COUNT;
-			_delay_ms(200); // Additional debounce
-		}
-		
-		// Read and display sensor data based on current mode
-		switch (display_mode) {
-			case DISPLAY_BMP_TEMPERATURE:
-			bmp_temperature = BMP280_ReadTemperature();
-			SevenSeg_Show(bmp_temperature); // Display as XXYY (XX.YY 째C)
-			break;
-			
-			case DISPLAY_BMP_PRESSURE:
-			bmp_pressure = BMP280_ReadPressure();
-			SevenSeg_Show(bmp_pressure); // Display as hPa (e.g., 1013 hPa)
-			break;
-			
-			case DISPLAY_DS18B20_TEMPERATURE:
-			ds18b20_temperature = DS18B20_ReadTemperature();
-			if (ds18b20_temperature == -9999) {
-				// Error reading DS18B20, show error code
-				SevenSeg_Show(8888);
-				} else {
-				SevenSeg_Show(ds18b20_temperature); // Display as XXYY (XX.YY 째C)
-			}
-			break;
-			
-			default:
-			display_mode = DISPLAY_BMP_TEMPERATURE;
-			break;
-		}
-		
-		// Wait before next reading
-		_delay_ms(500);
-	}
-	
-	return 0;
-}

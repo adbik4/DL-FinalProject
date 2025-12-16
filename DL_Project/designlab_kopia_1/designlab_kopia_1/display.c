@@ -1,5 +1,5 @@
-#include <main.h>
-#include <display.h>
+#include "main.h"
+#include "display.h"
 
 #define SEG_PORT_CTRL   PORTE
 #define SEG_DDR_CTRL    DDRE
@@ -50,32 +50,31 @@ void SevenSeg_Init(void) {
 	
 	
 	// Set up Timer0 for display multiplexing
-	TCCR0A = (1 << WGM01);              // CTC mode
-	TCCR0B = (1 << CS01) | (1 << CS00); // Prescaler 64
-	OCR0A = 249;                        // For 1ms interrupt at 16MHz: 16MHz/64/250 = 1kHz
-	TIMSK0 = (1 << OCIE0A);             // Enable compare match interrupt
+	TCCR0A = (1 << WGM01);              
+	TCCR0B = (1 << CS01) | (1 << CS00); 
+	OCR0A = 249;                        
+	TIMSK0 = (1 << OCIE0A);            
 }
 
-// Update a specific digit of the 7-segment display
 void SevenSeg_Update(void) {
-	// Turn off all digits
+	
 	SEG_PORT_CTRL |= (1 << SEG_DIGIT1) | (1 << SEG_DIGIT2) | (1 << SEG_DIGIT3) | (1 << SEG_DIGIT4);
 	
-	// Get pattern for current digit value (0-15)
-	uint8_t pattern = 0xFF;  // All segments off by default
+	
+	uint8_t pattern = 0xFF;  
 	if (seg_values[seg_digit] < 16) {
 		pattern = seven_seg_digits[seg_values[seg_digit]];
 	}
 	
 	// Output segment pattern to Port D (PD2-PD7)
-	SEG_PORT_DATA1 &= 0x03;              // Clear segment bits
-	SEG_PORT_DATA1 |= (pattern & 0xFC);  // Set new segment bits (bits 2-7)
+	SEG_PORT_DATA1 &= 0x03;              
+	SEG_PORT_DATA1 |= (pattern & 0xFC);  
 	
 	// Output segment pattern to Port B (PB0-PB1)
-	SEG_PORT_DATA2 &= 0xFC;              // Clear segment bits
-	SEG_PORT_DATA2 |= (pattern & 0x03);  // Set new segment bits (bits 0-1)
+	SEG_PORT_DATA2 &= 0xFC;              
+	SEG_PORT_DATA2 |= (pattern & 0x03);  
 	
-	// Select the current digit (active LOW)
+	// Select the current digit 
 	switch (seg_digit) {
 		case 0:
 		SEG_PORT_CTRL &= ~(1 << SEG_DIGIT1);
@@ -90,8 +89,7 @@ void SevenSeg_Update(void) {
 		SEG_PORT_CTRL &= ~(1 << SEG_DIGIT4);
 		break;
 	}
-	
-	// Move to next digit
+
 	seg_digit = (seg_digit + 1) % 4;
 }
 
@@ -102,14 +100,14 @@ ISR(TIMER0_COMPA_vect) {
 
 void SevenSeg_Show(int num)
 {
-	 // Ograniczenie do zakresu 0–9999
-	 if (num < 0) num = 0;
-	 if (num > 9999) num = 9999;
-	 
-	 // Rozbicie liczby na poszczególne cyfry (jednostki, dziesi¹tki, setki, tysi¹ce)
-	 seg_values[3] = num % 10;          // Jednoœci
-	 seg_values[2] = (int)(num / 10.0) % 10;   // Dziesi¹tki
-	 seg_values[1] = (int)(num / 100.0) % 10;  // Setki
-	 seg_values[0] = (int)(num / 1000.0) % 10; // Tysi¹ce
+	
+	if (num < 0) num = 0;
+	if (num > 9999) num = 9999;
+	
+	
+	seg_values[3] = num % 10;          
+	seg_values[2] = (int)(num / 10.0) % 10;   
+	seg_values[1] = (int)(num / 100.0) % 10;  
+	seg_values[0] = (int)(num / 1000.0) % 10; 
 	
 }
