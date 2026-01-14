@@ -6,7 +6,7 @@
 ![alt text](Images/DL_Schematic_state5.png)
 
 ## Design PCB
-![alt text](Images/DL_PCB_state4.png)
+![alt text](Images/DL_PCB_state5.png)
 
 ## Podgląd 3D
 ![alt text](Images/DL_PCB_preview3.png)
